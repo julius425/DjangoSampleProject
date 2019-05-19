@@ -20,7 +20,45 @@ virtualenv -p python3.6 venv
 pip install -r requirements.txt
 ```
 ### Changing names
+
+Project names changing: 
+
+settings.py
+
+```
+INSTALLED APPS = [
+    'newappname'
+]
+...
+...
+...
+ROOT_URLCONF = 'NewProjectName.urls'
+WSGI_APPLICATION = 'NewProjectName.wsgi.application'
+```
+
+wsgi.py
+
+```
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "NewProjectName.settings")
+```
+
+manage.py
+
+```
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "NewProjectName.settings")
+```
+
+
+apps.py
+
+```
+class NewAppNameConfig(AppConfig):
+    name = 'newappname'
+```
+
+
 Change model and view names to those of your own.
+
 Change template tags respectively, e.g:
  
 ```
